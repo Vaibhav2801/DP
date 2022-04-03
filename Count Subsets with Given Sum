@@ -1,0 +1,33 @@
+ #include<bits/stdc++.h>
+ using namespace std;
+ #define int long long 
+ #define endl "\n"
+ const double pi=3.141593;
+ const int mod=1e9+7;
+ const int INF=1e9;
+ #define FAST ios_base::sync_with_stdio(false)
+ #define T double t;cin>>t; while(t--)
+ #define vll vector<int>
+ #define pb push_back
+ #define ff first
+ #define ss second
+ #define str to_string
+ #define intt stoll
+ #define all(x) x.begin(),x.end()
+int countsub(int a[],int n,int i, int sum,int count){
+    if(i==n){
+        if(sum==0)   count++;
+        return count;
+    }
+    count=countsub(a,n,i+1,sum-a[i],count);
+    count=countsub(a,n,i+1,sum,count);
+    return count;
+}
+ int32_t main()
+{
+int n,sum,count=0;  cin>>n>>sum;
+int a[n]={0};
+for(int i=0;i<n;i++)   cin>>a[i];
+cout<<countsub(a,n,0,sum,count);
+
+ }
